@@ -1,17 +1,17 @@
 # Python
 __pycache__/
+.pytest_cache/
 *.py[cod]
 *.egg-info/
 .venv/
 venv/
 .env
 
-# VSCode / JetBrains
-.idea/
+# VSCode settings
 .vscode/
 
 # Streamlit
 .streamlit/
 
-# Data & Logs
+# Logs
 *.log
