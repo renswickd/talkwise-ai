@@ -10,6 +10,7 @@ A self-contained NLP-powered web app that analyzes conversation transcripts for 
 - 🗣️ Filler word ratio (e.g., "um", "like", "you know")
 - 📈 Interactive web dashboard using Streamlit
 - 📄 Custom transcript support (12–16 line dialogues)
+- 🧪 Unit-tested transcript parser with robust error handling
 
 ---
 
@@ -29,4 +30,8 @@ source venv/bin/activate  # or venv\Scripts\activate on Windows
 ```bash
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
+```
+### 4. Run Unit Tests (Optional)
+```bash
+pytest tests/
 ```
