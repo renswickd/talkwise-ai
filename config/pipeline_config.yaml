@@ -1,0 +1,11 @@
+# This file contains the configuration for the pipeline.
+
+# Model Configuration
+MODEL_NAME : "cardiffnlp/twitter-roberta-base-sentiment"
+PIPELINE_NAME : "sentiment-analysis"
+
+# Label Mapping (from model card)
+LABELS  :
+  LABEL_0: 'NEGATIVE'
+  LABEL_1: 'NEUTRAL'
+  LABEL_2: 'POSITIVE'
