@@ -1,5 +1,5 @@
-import pytest
-from app.analyzer import compute_sentiment, compute_filler_ratio
+# import pytest
+from app.analyzer import compute_sentiment, compute_filler_ratio, sentiment_polarity
 
 def test_compute_sentiment_positive():
     text = "I absolutely loved the presentation!"
@@ -19,3 +19,9 @@ def test_filler_ratio_no_fillers():
     text = "This is a normal sentence with no filler words."
     ratio = compute_filler_ratio(text)
     assert ratio == 0.0
+
+def test_sentiment_polarity_mapping():
+    assert sentiment_polarity("POSITIVE") == 1
+    assert sentiment_polarity("NEUTRAL") == 0
+    assert sentiment_polarity("NEGATIVE") == -1
+    assert sentiment_polarity("UNKNOWN") == 0

@@ -10,6 +10,11 @@ LABELS  :
   LABEL_1: 'NEUTRAL'
   LABEL_2: 'POSITIVE'
 
+LABEL_SCORE_MAP : 
+  POSITIVE: 1
+  NEUTRAL: 0 
+  NEGATIVE: -1
+
 # Filler Word List
 FILLER_WORDS :
   - um
