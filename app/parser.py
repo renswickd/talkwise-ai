@@ -28,6 +28,17 @@ def parse_transcript(file_path: str) -> list[dict]:
 
     return parsed_turns
 
+def get_speakers(transcript: list[dict]) -> list[str]:
+    """
+    Extracts unique speakers from the transcript.
+    Returns a sorted list of speaker names.
+    """
+    if not transcript:
+        raise ValueError("Transcript is empty or not provided.")
+    speakers_set = set(turn['speaker'] for turn in transcript)
+    return set(sorted(speakers_set))
+
+
 if __name__ == "__main__":
     # Example usage
     file_path = "data/transcript.txt"
@@ -38,5 +49,8 @@ if __name__ == "__main__":
         print(parsed_data[:5])  # Print first 5 entries for brevity
         # for entry in parsed_data:
         #     print(f"Turn {entry['turn']}: {entry['speaker']} says '{entry['utterance']}'")
+
+        speakers = get_speakers(parsed_data)
+        print(f"Speakers: {speakers}")
     except Exception as e:
         print(f"Error: {e}")

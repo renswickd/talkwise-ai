@@ -9,10 +9,10 @@ CONFIG = read_yaml()
 MODEL_NAME = CONFIG['MODEL_NAME']
 PIPELINE_NAME = CONFIG['PIPELINE_NAME']
 LABELS = CONFIG['LABELS']
+LABEL_SCORE_MAP = CONFIG['LABEL_SCORE_MAP']
 
 nlp = spacy.load("en_core_web_sm")
 FILLER_WORDS = set(CONFIG["FILLER_WORDS"])
-
 
 # Tokenizer & model setup
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
@@ -34,11 +34,6 @@ def compute_filler_ratio(text: str) -> float:
     """
     Calculates the ratio of filler words to total valid tokens.
     """
-    # if not isinstance(text, str):
-    #     raise TypeError("Text must be a string.")
-    # if not text.strip():
-    #     raise ValueError("Text is empty.")
-
     doc = nlp(text)
     total_tokens = [token for token in doc if token.is_alpha]
     if not total_tokens:
@@ -48,6 +43,11 @@ def compute_filler_ratio(text: str) -> float:
     ratio = round(filler_count / len(total_tokens), 3)
     return ratio
 
+def sentiment_polarity(label: str) -> int:
+    """
+    Converts sentiment label to polarity score.
+    """
+    return LABEL_SCORE_MAP.get(label, 0)
 
 if __name__ == "__main__":
     # Example usage
@@ -63,3 +63,7 @@ if __name__ == "__main__":
     text = "Um, I was like totally going to do that, you know?"
     ratio = compute_filler_ratio(text)
     print(f"Filler Ratio: {ratio}")
+
+    text = "This is a normal sentence with no filler words."
+    polarity = sentiment_polarity(result['label'])
+    print(f"Sentiment Polarity: {polarity}")
