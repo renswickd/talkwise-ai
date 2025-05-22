@@ -1,5 +1,5 @@
 import pytest
-from app.analyzer import compute_sentiment
+from app.analyzer import compute_sentiment, compute_filler_ratio
 
 def test_compute_sentiment_positive():
     text = "I absolutely loved the presentation!"
@@ -9,3 +9,13 @@ def test_compute_sentiment_positive():
     assert result["label"] in {"POSITIVE", "NEGATIVE", "NEUTRAL"}
     assert 0.0 <= result["score"] <= 1.0
     assert result["label"] == "POSITIVE"  
+
+def test_filler_ratio_typical():
+    text = "Um, I was like totally going to do that, you know?"
+    ratio = compute_filler_ratio(text)
+    assert 0.0 < ratio <= 1.0
+
+def test_filler_ratio_no_fillers():
+    text = "This is a normal sentence with no filler words."
+    ratio = compute_filler_ratio(text)
+    assert ratio == 0.0

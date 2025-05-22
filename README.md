@@ -12,6 +12,7 @@ A self-contained NLP-powered web app that analyzes conversation transcripts for 
 - 📄 Custom transcript support (12–16 line dialogues)
 - ⚠️ Defensive error handling for invalid or missing input
 - 🔍 Sentiment analysis using CardiffNLP RoBERTa (3-class)
+- 🗣️ Filler word analysis using spaCy (customizable filler list in config)
 
 ---
 

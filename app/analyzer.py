@@ -1,14 +1,17 @@
-import torch
 import numpy as np
+import spacy
 from utils.common_functions import read_yaml
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
 # from config.pipeline_config import MODEL_NAME, PIPELINE_NAME, LABELS
 # Load configuration
-config = read_yaml("config/pipeline_config.yaml")
-MODEL_NAME = config['MODEL_NAME']
-PIPELINE_NAME = config['PIPELINE_NAME']
-LABELS = config['LABELS']
+CONFIG = read_yaml()
+MODEL_NAME = CONFIG['MODEL_NAME']
+PIPELINE_NAME = CONFIG['PIPELINE_NAME']
+LABELS = CONFIG['LABELS']
+
+nlp = spacy.load("en_core_web_sm")
+FILLER_WORDS = set(CONFIG["FILLER_WORDS"])
 
 
 # Tokenizer & model setup
@@ -26,6 +29,26 @@ def compute_sentiment(text: str) -> dict:
     score = round(result['score'], 3)
     return {"label": label, "score": score}
 
+
+def compute_filler_ratio(text: str) -> float:
+    """
+    Calculates the ratio of filler words to total valid tokens.
+    """
+    # if not isinstance(text, str):
+    #     raise TypeError("Text must be a string.")
+    # if not text.strip():
+    #     raise ValueError("Text is empty.")
+
+    doc = nlp(text)
+    total_tokens = [token for token in doc if token.is_alpha]
+    if not total_tokens:
+        return 0
+
+    filler_count = sum(1 for token in total_tokens if token.text.lower() in FILLER_WORDS)
+    ratio = round(filler_count / len(total_tokens), 3)
+    return ratio
+
+
 if __name__ == "__main__":
     # Example usage
     text = "I love programming!"
@@ -36,3 +59,7 @@ if __name__ == "__main__":
     # result = compute_sentiment(text)
     # # print(f"Sentiment: {result['label']}, Score: {result['score']}")
     # print(result)
+
+    text = "Um, I was like totally going to do that, you know?"
+    ratio = compute_filler_ratio(text)
+    print(f"Filler Ratio: {ratio}")

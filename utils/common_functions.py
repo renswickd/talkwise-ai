@@ -1,8 +1,10 @@
 import yaml
 import os
 
-def read_yaml(file_path):
-
+def read_yaml(file_path: str = "config/pipeline_config.yaml") -> dict:
+    """
+    Loads YAML configuration.
+    """
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"No file found at {file_path}")
     

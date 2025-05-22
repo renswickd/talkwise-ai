@@ -9,3 +9,44 @@ LABELS  :
   LABEL_0: 'NEGATIVE'
   LABEL_1: 'NEUTRAL'
   LABEL_2: 'POSITIVE'
+
+# Filler Word List
+FILLER_WORDS :
+  - um
+  - uh
+  - ah
+  - er
+  - hmm
+  - like
+  - so
+  - well
+  - actually
+  - basically
+  - literally
+  - seriously
+  - honestly
+  - obviously
+  - clearly
+  - maybe
+  - perhaps
+  - okay
+  - alright
+  - right
+  - just
+  - kinda
+  - sorta
+  - anyway
+  - now
+  - then
+  - sure
+  - yeah
+  - nope
+  - yup
+  - alrighty
+  - gee
+  - huh
+  - whoa
+  - really
+  - fine
+  - okayyy
+  - gotcha
