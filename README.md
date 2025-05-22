@@ -10,7 +10,8 @@ A self-contained NLP-powered web app that analyzes conversation transcripts for 
 - 🗣️ Filler word ratio (e.g., "um", "like", "you know")
 - 📈 Interactive web dashboard using Streamlit
 - 📄 Custom transcript support (12–16 line dialogues)
-- 🧪 Unit-tested transcript parser with robust error handling
+- ⚠️ Defensive error handling for invalid or missing input
+- 🔍 Sentiment analysis using CardiffNLP RoBERTa (3-class)
 
 ---
 
