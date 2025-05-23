@@ -19,26 +19,25 @@ A self-contained NLP-powered web app that analyzes conversation transcripts for 
 ## 📊 Metrics & Visualizations in the Dashboard
 The application analyzes the conversation transcript and presents the following metrics and visual insights in the Streamlit dashboard:
 
+### 🖼️ UI Components
 #### 🏠 Landing Summary (Always Visible)
-- **Number of Turns**: Total number of dialogue lines parsed from the transcript.
-- **Speakers Detected**: Unique participants (e.g., Speaker A, Speaker B).
-- **Sentiment Distribution**: Count of turns classified as Positive, Neutral, or Negative.
-- **Average Filler Ratio**: Average proportion of filler words (e.g., “um”, “like”) used per turn.
-- **Most Frequent Filler Words**: Top 5 most commonly used filler words across all turns.
-- **Average Sentiment Polarity**: Normalized sentiment score from -1 (Negative) to +1 (Positive), indicating the overall emotional tone.
 
-#### 🔽 Per-Turn Metrics (Expandable Tab)
-- **Transcript Table**: Shows each turn with speaker, utterance, sentiment label, and filler word ratio.
-- **Sentiment Line Plot**: Visualizes sentiment polarity progression across the conversation.
-- **Filler Ratio Bar Chart**: Highlights how frequently filler words appear per turn.
-- **Sentiment Heatmap**: Displays a heatmap of sentiment confidence per turn (optional advanced view).
+#### 📤 Sidebar
+- **Upload Transcript**: Upload a `.txt` file containing the dialogue transcript.
 
-#### 🔽 Overall Metrics (Expandable Tab)
-- **Sentiment Distribution Pie Chart**: Visual breakdown of total sentiment classes.
-- **Average Filler Ratio Gauge**: Interactive gauge showing overall filler usage.
-- **Speaker-wise Comparison Charts**: Visual comparison of sentiment and filler usage across speakers.
-- **Word Cloud**: Emphasizes most common (non-filler, non-stopword) words used in the transcript.
-- **Summary Table**: Aggregated stats (e.g., avg. polarity, filler ratio) for each speaker.
+#### 🏠 Landing Summary
+Displays upon successful upload:
+- 📄 **Total Turns**: Number of dialogue entries parsed.
+- 👥 **Speakers Detected**: List of distinct speakers.
+- 💬 **Average Filler Ratio**: Mean usage of filler words.
+- 📊 **Average Sentiment Polarity**: Overall emotional tone (-1 to +1).
+
+- 🎯 **Sentiment Distribution**: Donut chart showing label proportions.
+- 🔠 **Top 5 Filler Words**: Bar chart or table view of the most used fillers.
+
+
+
+
 
 ## ⚙️ Setup Instructions
 
@@ -59,4 +58,8 @@ pip install -r requirements.txt
 ### 4. Run Unit Tests (Optional)
 ```bash
 pytest tests/
+```
+### 5. Run the Application
+```bash
+streamlit run app.py
 ```

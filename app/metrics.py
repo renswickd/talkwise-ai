@@ -4,7 +4,7 @@ import pandas as pd
 import spacy
 from utils.common_functions import read_yaml
 from app.parser import parse_transcript
-from app.analyzer import compute_sentiment, compute_filler_ratio
+from app.analyzer import compute_sentiment, compute_filler_ratio, sentiment_polarity
 
 nlp = spacy.load("en_core_web_sm")
 CONFIG = read_yaml()
@@ -16,7 +16,9 @@ def prepare_per_turn_dataframe(transcript: list[dict]) -> pd.DataFrame:
     """
     df = pd.DataFrame(transcript)
     df['sentiment'] = df['utterance'].apply(lambda x: compute_sentiment(x)['label'])
+    df['confidence'] = df['utterance'].apply(lambda x: compute_sentiment(x)['score'])
     df['filler_ratio'] = df['utterance'].apply(compute_filler_ratio)
+    df['polarity_score'] = df['sentiment'].apply(sentiment_polarity)
     return df
 
 def compute_summary_stats(transcript_data: list[dict]) -> dict:
