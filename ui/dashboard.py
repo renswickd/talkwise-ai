@@ -100,6 +100,8 @@ import plotly.express as px
 from app.parser import parse_transcript
 from app.metrics import compute_summary_stats, prepare_per_turn_dataframe
 from ui.components import metric_card_style
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
 # Set page config
 st.set_page_config(page_title="Dialogue Insights Dashboard", layout="wide")
@@ -165,7 +167,7 @@ def main():
         sentiment_dist = summary_stats['sentiment_distribution']
         sentiment_df = pd.DataFrame({"Sentiment": list(sentiment_dist.keys()), "Count": list(sentiment_dist.values())})
         fig_sentiment = px.pie(sentiment_df, names="Sentiment", values="Count", hole=0.4)
-        st.plotly_chart(fig_sentiment, use_container_width=True)
+        st.plotly_chart(fig_sentiment, use_container_width=True, key="sentiment_main")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with col6:
@@ -220,6 +222,31 @@ def main():
             fig = px.bar(per_turn_df, x='speaker', y='filler_ratio', color='speaker', barmode='group')
             st.plotly_chart(fig, use_container_width=True)
             st.markdown("</div>", unsafe_allow_html=True)
+
+        # Overall Metrics
+    with st.expander("📊 Overall Metrics", expanded=False):
+        col11, col12 = st.columns(2)
+        with col11:
+            st.markdown("#### 🎯 Sentiment Class Distribution (Pie Chart)")
+            st.plotly_chart(fig_sentiment, use_container_width=True, key="sentiment_overall")
+
+        with col12:
+            st.markdown("#### 🎚️ Filler Ratio Gauge (Custom Display)")
+            filler_display = f"<div style='font-size:3rem;font-weight:bold;color:#00BFFF;'>{round(summary_stats['avg_filler_ratio']*100, 2)}%</div>"
+            st.markdown(filler_display, unsafe_allow_html=True)
+
+        st.markdown("#### 👤 Speaker-wise Summary Table")
+        speaker_summary = per_turn_df.groupby('speaker')[['filler_ratio', 'polarity_score']].mean().reset_index()
+        speaker_summary.columns = ['Speaker', 'Avg Filler Ratio', 'Avg Sentiment Polarity']
+        st.dataframe(speaker_summary.set_index('Speaker'))
+
+        st.markdown("#### ☁️ Word Cloud of All Utterances")
+        all_text = " ".join(per_turn_df['utterance'].tolist())
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_text)
+        fig_wc, ax_wc = plt.subplots()
+        ax_wc.imshow(wordcloud, interpolation='bilinear')
+        ax_wc.axis("off")
+        st.pyplot(fig_wc)
 
 if __name__ == "__main__":
     main()
