@@ -30,13 +30,11 @@ def main():
     per_turn_df = prepare_per_turn_dataframe(parsed_data)
     summary_stats = compute_summary_stats(parsed_data)
 
-    
-
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
         st.markdown(f"""<div style='{metric_card_style}'>
-        <div>Speakers Detected</div>
+        <div>👥 Speakers Detected</div>
         <ul style='text-align:left;'>
         {''.join([f'<li>{spk}</li>' for spk in summary_stats['speakers']])}
         </ul>
@@ -44,26 +42,24 @@ def main():
 
     with col2:
         st.markdown(f"""<div style='{metric_card_style}'>
-        <div>Total Turns</div>
+        <div>📄 Total Turns</div>
         <div style='font-size:2rem;font-weight:bold'>{summary_stats['num_turns']}</div>
         </div>""", unsafe_allow_html=True)
 
     with col3:
         st.markdown(f"""<div style='{metric_card_style}'>
-        <div>Avg Filler Ratio</div>
+        <div>💬 Avg Filler Ratio</div>
         <div style='font-size:2rem;font-weight:bold'>{round(summary_stats['avg_filler_ratio'],2)*100}%</div>
         </div>""", unsafe_allow_html=True)
 
     with col4:
         st.markdown(f"""<div style='{metric_card_style}'>
-        <div>Avg Sentiment Polarity</div>
+        <div>📊 Avg Sentiment Polarity</div>
         <div style='font-size:2rem;font-weight:bold'>{summary_stats['avg_sentiment_polarity']}</div>
         </div>""", unsafe_allow_html=True)
 
     st.divider()
-    # st.subheader("📈 Overview Visuals")
 
-    # Arrange both charts side by side with card styling
     col5, col6 = st.columns(2)
 
     with col5:
