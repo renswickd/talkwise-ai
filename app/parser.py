@@ -1,32 +1,30 @@
 import os
 
-def parse_transcript(file_path: str) -> list[dict]:
+def parse_transcript(transcript_str: str) -> list[dict]:
     """
-    Reads and parses a transcript file.
-    Returns a list of dictionaries with 'speaker' and 'utterance'.
+    Parses transcript text string into a structured list of dialogue turns.
+    Each turn is expected to start with 'Speaker X:'
     """
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"Transcript file not found at: {file_path}")
-    
+    lines = transcript_str.strip().split('\n')
     parsed_turns = []
 
-    with open(file_path, "r", encoding="utf-8") as f:
-        for i, line in enumerate(f):
-            line = line.strip()
-            if not line:
-                continue  # skip blank lines
+    for i, line in enumerate(lines):
+        line = line.strip()
+        if not line:
+            continue
 
-            if ":" not in line:
-                raise ValueError(f"Malformed line (missing ':'): {line}")
-            
-            speaker, utterance = line.split(":", 1)
-            parsed_turns.append({
-                "turn": i + 1,
-                "speaker": speaker.strip(),
-                "utterance": utterance.strip()
-            })
+        if ':' not in line:
+            raise ValueError(f"Malformed line at index {i + 1}: {line}")
+
+        speaker, utterance = line.split(':', 1)
+        parsed_turns.append({
+            "turn": i + 1,
+            "speaker": speaker.strip(),
+            "utterance": utterance.strip()
+        })
 
     return parsed_turns
+
 
 def get_speakers(transcript: list[dict]) -> list[str]:
     """

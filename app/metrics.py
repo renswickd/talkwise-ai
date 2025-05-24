@@ -23,8 +23,6 @@ def prepare_per_turn_dataframe(transcript: list[dict]) -> pd.DataFrame:
 
 def compute_summary_stats(transcript_data: list[dict]) -> dict:
     df  = prepare_per_turn_dataframe(transcript_data)
-    # print("hello\n\n")
-    print(df.head(5))
     
     # Speaker stats
     speakers = df['speaker'].unique().tolist()
