@@ -2,17 +2,24 @@
 
 This is a self-contained NLP-powered web app that analyzes conversation transcripts for sentiment and filler-word usage. Built using Hugging Face Transformers, spaCy, and Streamlit. The app extracts per-turn and overall conversation insights such as sentiment, filler word usage, and speaker statistics, and presents them in an engaging dashboard.
 
----
+## 💼 Why This App Is Useful
+### 📌 Business Use Case
+In any communication-heavy domain—like customer support, team meetings, interviews, or sales conversations—understanding how people speak can be as important as what they say.
 
-## 🚀 Features
+This app provides structured insights into:
 
-1. 📊 Sentiment analysis per dialogue turn (Positive, Negative, Neutral)
-2. 🗣️ Filler word ratio (e.g., "um", "like", "uhh")
-3. 📈 Interactive web dashboard using Streamlit
-4. 📄 Custom transcript support (12–16 line dialogues)
-5. ⚠️ Defensive error handling for invalid or missing input
-6. 🔍 Sentiment analysis using CardiffNLP RoBERTa (3-class)
-7. 🗣️ Filler word analysis using spaCy (customizable filler list in config)
+    - Emotional tone of a dialogue
+
+    - Clarity and fluency (via filler usage)
+
+    - Speaker-specific tendencies
+
+### 🎯 Who Benefits from This?
+- Customer Support Teams	- Monitor call quality, emotional tone, overuse of fillers
+- Sales Teams	- Analyze winning vs. losing call patterns
+- UX Researchers / Analysts	- Study conversation clarity during usability tests
+- Interviewers / Hiring Panels	- Track candidate fluency, confidence, or tone
+- Educators / Public Speakers	- Get feedback on speaking style
 
 ---
 
@@ -79,9 +86,6 @@ The application analyzes the conversation transcript and presents the following 
 ├── setup.py                     # Project metadata (optional packaging)
 └── README.md                    # You are here
 
-
-
-
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the repository
@@ -106,3 +110,12 @@ pytest tests/
 ```bash
 streamlit run app.py
 ```
+
+## Future Enhancements
+1. **Dynamic Top-N Controls** - User-selectable value to control "Top N" fillers and common words.
+2. **Downloadable Reports** - Export full summary as PDF or CSV.
+3. **Conversation Replay Mode** - Replay transcript like a chatbot, turn by turn.
+4. **Speaker Comparison Dashboard** - Compare emotional tone, clarity, and verbosity between speakers.
+5. **Stopword Filtering Toggle** - Let user choose to ignore or include common stopwords.
+6. **Dark/Light Theme Toggle** - Streamlit theming with .streamlit/config.toml.
+7. **Voice Transcription Pipeline** - Auto-transcribe audio using Whisper → Plug into this dashboard.

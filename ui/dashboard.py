@@ -1,3 +1,4 @@
+# import required libraries
 import streamlit as st
 from app.parser import parse_transcript
 from app.metrics import compute_summary_stats, prepare_per_turn_dataframe
@@ -14,7 +15,7 @@ def main():
     st.sidebar.title("📤 Upload Transcript")
     uploaded_file = st.sidebar.file_uploader("Upload transcript.txt", type=["txt"])
 
-    st.title("🧠 Dialogue Insights Dashboard")
+    st.title("📝 Dialogue Insights Dashboard")
 
     if not uploaded_file:
         st.markdown("""
