@@ -113,14 +113,16 @@ streamlit run app.py
 
 ## 🖼️ Screenshots
 
-### 📥 Upload and Landing Summary
-
+### 1. Transcript Upload Area
 ![1. Transcript Upload Area](screenshots/upload_page.png)
 
+### 2. Landing Summary
 ![2. Landing Summary](screenshots/landing_summary.png)
 
+### 3. Per-turn Metrics
 ![3. Per-turn Metrics](screenshots/per_turn_metrics.png)
 
+### 4. Overall Metrics
 ![4. Overall Metrics](screenshots/overall_metrics.png)
 
 
