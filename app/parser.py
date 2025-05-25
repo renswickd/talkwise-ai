@@ -1,5 +1,3 @@
-import os
-
 def parse_transcript(transcript_str: str) -> list[dict]:
     """
     Parses transcript text string into a structured list of dialogue turns.

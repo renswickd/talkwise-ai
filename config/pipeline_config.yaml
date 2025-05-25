@@ -10,6 +10,7 @@ LABELS  :
   LABEL_1: 'NEUTRAL'
   LABEL_2: 'POSITIVE'
 
+# Label Score Mapping
 LABEL_SCORE_MAP : 
   POSITIVE: 1
   NEUTRAL: 0 

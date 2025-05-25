@@ -2,8 +2,8 @@ import numpy as np
 import spacy
 from utils.common_functions import read_yaml
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
-
 # from config.pipeline_config import MODEL_NAME, PIPELINE_NAME, LABELS
+
 # Load configuration
 CONFIG = read_yaml()
 MODEL_NAME = CONFIG['MODEL_NAME']
