@@ -52,6 +52,7 @@ The application analyzes the conversation transcript and presents the following 
 - Top 5 Filler Words (Bar/Table toggle)
 
 ## Folder Structure
+```
 .
 ├── app/                         # Core NLP logic
 │   ├── analyzer.py              # Sentiment & filler ratio computations
@@ -62,7 +63,7 @@ The application analyzes the conversation transcript and presents the following 
 │   └── pipeline_config.yaml     # Filler word list, top filler count, etc.
 │
 ├── data/                        # Transcript input/output storage
-│   └── temp_transcript.txt      # Temporary file for uploaded transcript
+│   └── transcript.txt           # Sample input transcript file
 │
 ├── tests/                       # Unit tests
 │   ├── test_parser.py
@@ -81,10 +82,11 @@ The application analyzes the conversation transcript and presents the following 
 ├── utils/                       # Helper functions
 │   └── common_functions.py      # YAML loader and shared utilities
 │
-├── app.py                       # 🔁 ENTRY POINT for Streamlit app
+├── app.py                       # ENTRY POINT for Streamlit app
 ├── requirements.txt             # Python dependencies
-├── setup.py                     # Project metadata (optional packaging)
-└── README.md                    # You are here
+├── setup.py                     # Project metadata
+└── README.md                    
+```
 
 ## ⚙️ Setup Instructions
 
@@ -112,10 +114,9 @@ streamlit run app.py
 ```
 
 ## Future Enhancements
-1. **Dynamic Top-N Controls** - User-selectable value to control "Top N" fillers and common words.
-2. **Downloadable Reports** - Export full summary as PDF or CSV.
-3. **Conversation Replay Mode** - Replay transcript like a chatbot, turn by turn.
-4. **Speaker Comparison Dashboard** - Compare emotional tone, clarity, and verbosity between speakers.
-5. **Stopword Filtering Toggle** - Let user choose to ignore or include common stopwords.
-6. **Dark/Light Theme Toggle** - Streamlit theming with .streamlit/config.toml.
-7. **Voice Transcription Pipeline** - Auto-transcribe audio using Whisper → Plug into this dashboard.
+1. **Transcript Summarizer**: Automatically converts the full conversation into a short summary using HuggingFace `summarization` pipeline (e.g., `facebook/bart-large-cnn`).
+2. **Dynamic Top-N Controls** - User-selectable value to control "Top N" fillers and common words.
+3. **Downloadable Reports** - Export full summary as PDF or CSV.
+4. **Stopword Filtering Toggle** - Let user choose to ignore or include common stopwords.
+5. **UI Enhancements** - Streamlit theming with .streamlit/config.toml.
+6. **Voice Transcription Pipeline** - Auto-transcribe audio using Whisper Plug into this dashboard. (Advanced)
