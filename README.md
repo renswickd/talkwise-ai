@@ -8,11 +8,9 @@ In any communication-heavy domain—like customer support, team meetings, interv
 
 This app provides structured insights into:
 
-    - Emotional tone of a dialogue
-
-    - Clarity and fluency (via filler usage)
-
-    - Speaker-specific tendencies
+- Emotional tone of a dialogue
+- Clarity and fluency (via filler usage)
+- Speaker-specific tendencies
 
 ### 🎯 Who Benefits from This?
 - Customer Support Teams	- Monitor call quality, emotional tone, overuse of fillers
@@ -113,10 +111,23 @@ pytest tests/
 streamlit run app.py
 ```
 
+## 🖼️ Screenshots
+
+### 📥 Upload and Landing Summary
+
+![1. Transcript Upload Area](screenshots/upload_page.png)
+
+![2. Landing Summary](screenshots/landing_summary.png)
+
+![3. Per-turn Metrics](screenshots/per_turn_metrics.png)
+
+![4. Overall Metrics](screenshots/overall_metrics.png)
+
+
 ## Future Enhancements
 1. **Transcript Summarizer**: Automatically converts the full conversation into a short summary using HuggingFace `summarization` pipeline (e.g., `facebook/bart-large-cnn`).
 2. **Dynamic Top-N Controls** - User-selectable value to control "Top N" fillers and common words.
 3. **Downloadable Reports** - Export full summary as PDF or CSV.
-4. **Stopword Filtering Toggle** - Let user choose to ignore or include common stopwords.
+4. **Stopword Filtering Toggle** - Let user choose to ignore or include common stopwords. (including single characters)
 5. **UI Enhancements** - Streamlit theming with .streamlit/config.toml.
 6. **Voice Transcription Pipeline** - Auto-transcribe audio using Whisper Plug into this dashboard. (Advanced)
