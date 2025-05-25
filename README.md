@@ -1,4 +1,4 @@
-# 💬 Dialogue Insights
+# 💬 Takwise-AI
 
 This is a self-contained NLP-powered web app that analyzes conversation transcripts for sentiment and filler-word usage. Built using Hugging Face Transformers, spaCy, and Streamlit. The app extracts per-turn and overall conversation insights such as sentiment, filler word usage, and speaker statistics, and presents them in an engaging dashboard.
 
